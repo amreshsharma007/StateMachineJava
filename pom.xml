@@ -21,6 +21,25 @@
 
     <dependencies>
 
+        <dependency>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <groupId>jakarta.persistence</groupId>
+            <version>3.2.0</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>jackson-annotations</artifactId>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <version>2.17.2</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>lombok</artifactId>
+            <groupId>org.projectlombok</groupId>
+            <scope>provided</scope>
+            <version>1.18.34</version>
+        </dependency>
+
     </dependencies>
 
     <build>

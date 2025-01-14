@@ -1,4 +1,4 @@
-package com.aks007.aks007;
+package com.aks007;
 
 public class App {
 }
