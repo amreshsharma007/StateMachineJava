@@ -19,13 +19,11 @@ To include StateMachineJava in your project, add the following dependency to you
 
 ```xml
 <dependency>
-    <groupId>com.example</groupId>
-    <artifactId>statemachinejava</artifactId>
+    <groupId>com.aks007</groupId>
+    <artifactId>state-machine</artifactId>
     <version>1.0.0</version>
 </dependency>
 ```
-
-Replace `com.example` and `statemachinejava` with the actual group ID and artifact ID of the library, and `1.0.0` with the current version.
 
 ## Usage
 
