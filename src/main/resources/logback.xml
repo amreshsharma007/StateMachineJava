@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property name="DIRECTORY" value="logs"/>
+    <contextName>${HOSTNAME}</contextName>
+    <timestamp key="year" datePattern="yyyy"/>
+    <timestamp key="month" datePattern="MMM"/>
+    <timestamp key="date" datePattern="dd"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>[%d{dd-MMM-yyyy HH:mm:ss}] %level: %msg%n</pattern>
+            <!--            <pattern>[%d{dd-MMM-yy HH:mm:ss.SSS}] %level: %class.%M:%L - %msg%n</pattern>-->
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${DIRECTORY}/default.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            rollover daily
+            <fileNamePattern>${DIRECTORY}/%d{yyyy/MM/dd, aux}/%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>[%d{dd-MMM-yyyy HH:mm:ss}] %level: %class.%M:%L - %msg%n</pattern>
+            <!--            <pattern>%d{yy-MM-dd HH:mm:ss.SSS} %X{RANDOM_ID} %-5level %class{36}.%M %L - %msg%n</pattern>-->
+        </encoder>
+    </appender>
+
+    <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="FILE"/>
+        <includeCallerData>true</includeCallerData>
+        <queueSize>5000</queueSize>
+        <maxFlushTime>0</maxFlushTime>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="ASYNC"/>
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
